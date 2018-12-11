@@ -1,4 +1,4 @@
-Projeto desenvolvido no estágio supervisionado em ciência da computação com a orientação do professor-orientador Jackson Gomes.
+Projeto desenvolvido na matéria de estágio supervisionado em ciência da computação com a orientação do professor-orientador Jackson Gomes.
 
 
 No Windows, executar no prompt:
