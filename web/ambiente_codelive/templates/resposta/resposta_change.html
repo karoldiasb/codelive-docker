@@ -1,0 +1,84 @@
+
+{% load i18n admin_urls static admin_utils admin_urls %}
+
+{{ block.super }}
+{{ endblock }}
+
+<!--<div class="row mb-4">
+
+     <div class="col-md-4">
+        <div class="d-block">
+            <h3>DATA EM QUE FOI RESPONDIDA </h3>
+        </div>
+        {{ resposta.data_da_resposta }} 
+    </div>
+
+</div>
+
+<div class="row mb-4">
+    
+    <div class="col-md-12">
+        <div class="d-block">
+            <h3>RESPOSTA DO DESAFIO</h3>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                  <p class="card-text">
+                    {% autoescape off %}
+                    {{ resposta.resposta_do_desafio }}
+                    {% endautoescape %}</p>
+            </div>
+            <div id="conteudo" class="card-body">
+                
+            </div>
+        </div>
+    </div>
+
+</div>-->
+
+{% block after_related_objects %}
+    
+    {% if original %}
+        <h2>CORREÇÃO DESSA RESPOSTA</h2>
+        <hr>
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>Data da Correção da Resposta</th>
+                    <th>Pontuação</th>
+                    
+                    <th>Ver outras informações </th>
+
+                </tr>
+            </thead>
+            <tbody>
+            {% for correcao in correcoes %}
+                <tr>
+                     <td>{{ correcao.data_de_criacao }}</td>
+                    <td>{{ correcao.pontuacao }}</td>
+                    <td>
+                        <a href="{% url 'admin:ambiente_codelive_correcaoautomaticaderesposta_change' correcao.id  %}">
+                            Mais informações
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <br>
+        <br>
+    {% endif %}
+
+{% endblock %}
+
+
+
+
+
+{% block admin_change_form_document_ready %}
+        <script type="text/javascript">
+            (function ($){
+
+            })(django.jQuery);
+        </script>
+{% endblock %}

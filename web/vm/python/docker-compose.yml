@@ -1,0 +1,5 @@
+version: '3'
+
+services:
+  codelive_vm_python:
+    build: ./

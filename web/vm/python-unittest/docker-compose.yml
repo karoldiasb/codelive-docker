@@ -1,0 +1,5 @@
+version: '3'
+
+services:
+  moulwebapp_vm_python_unittest:
+    build: ./

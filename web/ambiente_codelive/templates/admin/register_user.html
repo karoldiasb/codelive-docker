@@ -1,0 +1,49 @@
+{% extends "admin/site_base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+    <style>
+        .btn-salvar {
+            background: #4169E1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            color: #fff !important;
+        }
+
+        
+    </style>
+    {{ form.media }}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} register {% endblock %}
+
+{% block usertools %}{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content_title %} {% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
+
+{% block content %}
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Novo usuário</h1>
+                    <form method="POST" class="usuario-form">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                  <button type="submit" class="btn-salvar">Salvar</button>
+                </form>
+                </div>
+            </div>
+            <br>
+
+            <hr>
+           
+        </form>
+
+    </div>
+{% endblock %}

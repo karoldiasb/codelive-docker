@@ -1,0 +1,126 @@
+
+{% load i18n admin_urls static admin_utils admin_urls md2 %}
+
+
+
+{% block extrastyle %}
+    <style>
+        .btn-responder {
+            background: #4169E1;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            cursor: pointer;
+            color: #fff !important;
+            float: right;
+        }
+
+        
+    </style>
+    {{ form.media }}
+{% endblock %}
+
+ 
+
+</br>
+
+
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="d-block">
+            <h3>DESAFIO CADASTRADO POR: </h3> {{ desafio.autor }}
+        </div>
+</div>
+
+    <div class="col-md-2">
+        <div class="d-block">
+            <h3>DATA DE CADASTRO</h3>
+        </div>
+        {{ desafio.data_de_cadastro }}
+    </div>
+
+    
+
+</div>
+
+<div class="col-md-2">
+        <div class="d-block">
+            <h3>NIVEL DE DIFICULDADE</h3>
+        </div>
+        {{ desafio.nivel_de_dificuldade.nivel }}
+</div>
+
+
+
+<div class="row mb-4">
+
+    <div class="col-md-12">
+        <div class="d-block">
+            <h3>ENUNCIADO</h3>
+        </div>
+        <div class="card">
+            <div id="conteudo" class="card-body">
+                {% autoescape off %}
+                    {{ desafio.enunciado | markdown }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mb-4">
+
+    <div class="col-md-12">
+        <div class="d-block">
+            <h3>DESCRIÇÃO</h3>
+        </div>
+        <div class="card">
+            <div id="conteudo" class="card-body">
+                {% autoescape off %}
+                    {{ desafio.descricao | markdown }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mb-4">
+
+    <div class="col-md-12">
+        <div class="d-block">
+            <h3>PRÉ-CÓDIGO</h3>
+        </div>
+        <div class="card">
+            <div id="conteudo" class="card-body">
+                {% autoescape off %}
+                    {{ desafio.pre_codigo | markdown }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% if desafio.arquivo %}
+<div class="row mb-4">
+    <div class="col-md-6">
+    <h4>DOWNLOAD DO ARQUIVO ANEXADO:  </h4> 
+        
+    <a href="{{desafio.arquivo.url}}" class="btn-responder" style="">Download {{ desafio.arquivo }}</a>
+</div>
+</div>
+{% endif %}
+
+
+
+{% block admin_change_form_document_ready %}
+        <script type="text/javascript">
+            (function ($){
+
+            })(django.jQuery);
+        </script>
+{% endblock %}

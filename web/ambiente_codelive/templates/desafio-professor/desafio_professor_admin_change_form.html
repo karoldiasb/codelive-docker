@@ -1,0 +1,59 @@
+{% extends 'admin/change_form.html' %}
+{% load i18n admin_urls static admin_utils admin_modify %}
+
+{% block title %}
+    CodeLive 
+{% endblock %}
+
+
+{% block content_title %}
+    <h2> DESCRIÇÃO DO DESAFIO </h2>
+    <tr> </tr>
+{% endblock %}
+
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">CodeLive</a></h1>
+{% endblock %}
+
+
+{% block extrahead %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap-theme.css" %}"/>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static "/admin/js/jquery.init.js"%}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "/codelive/css/codelive.css" %}">
+{% endblock %}
+
+
+
+{% block field_sets %}
+    {% desafio_professor_change %}
+{% endblock %}
+
+
+{#{% block inline_field_sets %}#}
+
+{#{% endblock %}#}
+
+
+
+
+{% block admin_change_form_document_ready %}
+    {{ block.super }}
+    <script type="text/javascript">
+        (function ($){
+            $("tr.has_original").each(function (index) {
+                var $text_area = $(this).children("td.field-conteudo").children();
+                $text_area.attr("readonly", "readonly");
+                console.log($text_area);
+            });
+        })(django.jQuery);
+    </script>
+{% endblock %}
+
+
+
+
